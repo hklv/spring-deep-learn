@@ -42,6 +42,7 @@ public class CarLifeCycle implements BeanFactoryAware, BeanNameAware, Initializi
     }
 
     public void setColor(String color) {
+        System.out.println("调用setColor方法设置属性");
         this.color = color;
     }
 

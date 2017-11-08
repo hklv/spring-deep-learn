@@ -11,10 +11,25 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
     public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
-        return null;
+        if (s.equals("car")) {
+            CarLifeCycle car = (CarLifeCycle) o;
+            if (car.getColor() == null) {
+                System.out.println("调用BeanPost.postProcessBeforeInitialization,颜色为空，设置为黑色");
+                car.setColor("黑色");
+            }
+        }
+        return o;
     }
 
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        return null;
+        if (s.equals("car")) {
+            CarLifeCycle car = (CarLifeCycle) o;
+            if (car.getMaxSpeed() > 200) {
+                System.out.println("调用BeanProcessAfterInitialization,速度大于200，将速度调整为200");
+            }
+            car.setMaxSpeed(200);
+
+        }
+        return o;
     }
 }
