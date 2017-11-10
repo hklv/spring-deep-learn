@@ -10,4 +10,6 @@
     </bean>-->
     <bean id="car" class="com.lhk.IOC.CarLifeCycle" init-method="myInit" destroy-method="myDestroy" p:brand="宝马"
           p:color="黑色" p:maxSpeed="400"/>
+    <bean class="com.lhk.IOC.MailSendListener"/>
+    <bean id="mailSender" class="com.lhk.IOC.MailSender"/>
 </beans>
