@@ -12,4 +12,12 @@
           p:color="黑色" p:maxSpeed="400"/>
     <bean class="com.lhk.IOC.MailSendListener"/>
     <bean id="mailSender" class="com.lhk.IOC.MailSender"/>
+    <bean id="pmonitor" class="com.lhk.AOP.ControllablePerformanceMonitor"/>
+    <bean id="forumServiceTarget" class="com.lhk.AOP.jdk.ForumServiceImpl"/>
+    <bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interfaces="com.lhk.AOP.Monitorable"
+          p:target-ref="forumServiceTarget"
+          p:interceptorNames="pmonitor"
+          p:proxyTargetClass="true"
+    />
 </beans>
