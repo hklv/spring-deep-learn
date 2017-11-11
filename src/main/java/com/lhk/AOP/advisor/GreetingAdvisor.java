@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * @Description:
  * @Date: create at 2017/11/10 15:24
  */
-public class GeetingAdvisor extends StaticMethodMatcherPointcutAdvisor {
+public class GreetingAdvisor extends StaticMethodMatcherPointcutAdvisor {
     public boolean matches(Method method, Class<?> aClass) {
         return "greetTo".equals(method.getName());
     }

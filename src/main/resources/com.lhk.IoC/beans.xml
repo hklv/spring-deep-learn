@@ -20,4 +20,25 @@
           p:interceptorNames="pmonitor"
           p:proxyTargetClass="true"
     />
+    <bean id="waiterTarget" class="com.lhk.AOP.advisor.Waiter"/>
+    <bean id="sellerTarget" class="com.lhk.AOP.advisor.Seller"/>
+    <bean id="greetingAdvice" class="com.lhk.AOP.advisor.GreetingBeforeAdvice"/>
+    <bean id="greetingAdvisor" class="com.lhk.AOP.advisor.GreetingAdvisor"
+          p:advice-ref="greetingAdvice"
+    />
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interceptorNames="greetingAdvisor" p:proxyTargetClass="true"/>
+    <bean id="waiter" parent="parent" p:target-ref="waiterTarget"/>
+    <bean id="seller" parent="parent" p:target-ref="sellerTarget"/>
+    <bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+          p:advice-ref="greetingAdvice" p:pattern=".*greet*"
+    />
+    <bean id="waiter1" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interceptorNames="regexpAdvisor"
+          p:target-ref="waiterTarget"
+          p:proxyTargetClass="true"
+    />
+    <bean id="dynamicAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+
+    />
 </beans>
