@@ -6,7 +6,7 @@ package com.lhk.AOP;
  * @Date: create at 2017/11/10 13:52
  */
 public class NaiveWaiter implements Waiter {
-    public void greedTo(String name) {
+    public void greetTo(String name) {
         System.out.println("greet to " + name);
     }
 
